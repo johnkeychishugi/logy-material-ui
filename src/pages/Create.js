@@ -1,7 +1,18 @@
 import React from 'react'
-import { Typography, Button, Container } from '@mui/material';
+import { Typography, Button, Container, } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
- const Create = () => {
+const useStyles = makeStyles({
+     btn:{
+       fontSize: 60,
+       backgroundColor: 'violet'
+     }
+});
+
+const Create = () => {
+  const classes = useStyles();
+
   return (
     <Container>
         <Typography
@@ -13,15 +24,24 @@ import { Typography, Button, Container } from '@mui/material';
           Create a New Note
         </Typography>
         <Button
+          className={classes.btn}
           onClick={ ()=>{console.log('You clicked me') }}
           type="submit"
           color="secondary"
           variant="contained"
+          endIcon={<KeyboardArrowRightIcon />}
         >
           Submit
         </Button>
-        {/* <Button type="submit">Submit</Button>
-        <Button type="submit" color="secondary" variant="outlined">Submit</Button>*/}
+        {/* Icons */}
+        {/* <AcUnitIcon />
+        <AcUnitIcon color="secondary" fontSize="large" />
+        <AcUnitIcon color="secondary" fontSize="small" />
+        <AcUnitIcon color="action" fontSize="small" />
+        <AcUnitIcon color="error" fontSize="small" />
+        <AcUnitIcon color="disable" fontSize="small" /> */}
+
+
     </Container>
   )
 }

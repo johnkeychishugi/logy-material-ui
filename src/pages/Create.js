@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Create() {
+ const Create = () => {
   return (
     <div>
       Create page
     </div>
   )
 }
+
+export default Create

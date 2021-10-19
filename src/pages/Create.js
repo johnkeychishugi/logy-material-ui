@@ -1,9 +1,9 @@
 import React from 'react'
-import { Typography } from '@mui/material';
+import { Typography, Button, Container } from '@mui/material';
 
  const Create = () => {
   return (
-    <div>
+    <Container>
         <Typography
           variant="h6"
           color="textSecondary"
@@ -12,7 +12,17 @@ import { Typography } from '@mui/material';
         >
           Create a New Note
         </Typography>
-    </div>
+        <Button
+          onClick={ ()=>{console.log('You clicked me') }}
+          type="submit"
+          color="secondary"
+          variant="contained"
+        >
+          Submit
+        </Button>
+        {/* <Button type="submit">Submit</Button>
+        <Button type="submit" color="secondary" variant="outlined">Submit</Button>*/}
+    </Container>
   )
 }
 

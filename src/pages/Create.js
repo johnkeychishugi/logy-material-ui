@@ -4,10 +4,7 @@ import {  makeStyles } from '@mui/styles';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const useStyles = makeStyles({
-     btn:{
-       fontSize: 60,
-       backgroundColor: 'violet'
-     }
+
 });
 
 const Create = () => {
@@ -24,7 +21,6 @@ const Create = () => {
           Create a New Note
         </Typography>
         <Button
-          className={classes.btn}
           onClick={ ()=>{console.log('You clicked me') }}
           type="submit"
           color="secondary"
@@ -33,7 +29,6 @@ const Create = () => {
         >
           Submit
         </Button>
-
     </Container>
   )
 }

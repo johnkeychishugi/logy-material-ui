@@ -5,10 +5,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => {
+  return {
     page:{
         background: '#f9f9f9',
-        width: '100%'
+        width: '100%',
+        padding: theme.spacing(3)
     },
     drawer:{
         width: drawerWidth
@@ -21,7 +23,11 @@ const useStyle = makeStyles({
     },
     active:{
         background: '#f4f4f4 !important'
+    },
+    title:{
+        padding: theme.spacing(2)
     }
+  }
 })
 
 const Layout = ({ children }) => {
@@ -50,7 +56,7 @@ const Layout = ({ children }) => {
                 classes={{ paper: classes.drawerPaper }}
             >
                 <div>
-                    <Typography variant="h5">
+                    <Typography variant="h5" className={classes.title}>
                         Ninja Notes
                     </Typography>
                 </div>

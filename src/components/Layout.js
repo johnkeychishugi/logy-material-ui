@@ -1,7 +1,8 @@
 import {  makeStyles } from '@mui/styles';
-import { Typography, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, AppBar, Toolbar, Avatar } from '@mui/material';
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@mui/icons-material';
 import { useHistory, useLocation } from 'react-router-dom';
+import { format } from 'date-fns';
 
 const drawerWidth = 240;
 
@@ -26,6 +27,18 @@ const useStyle = makeStyles((theme) => {
     },
     title:{
         padding: theme.spacing(2)
+    },
+    appbar:{
+        width: `calc(100% - ${drawerWidth}px) !important`
+    },
+    toolbar: {
+        marginTop: 60
+    },
+    date:{
+        flexGrow: 1
+    },
+    avatar:{
+        marginLeft: theme.spacing(2)
     }
   }
 })
@@ -49,6 +62,20 @@ const Layout = ({ children }) => {
      
     return ( 
         <div className={classes.root}>
+            <AppBar
+              elevation={0}
+              className={classes.appbar}
+            >
+                <Toolbar>
+                    <Typography className={classes.date}>
+                        Today is the { format(new Date(),'do MMMM Y') }
+                    </Typography>
+                    <Typography>
+                        Mario
+                    </Typography>
+                    <Avatar src="/mario-av.png" className={classes.avatar}/>
+                </Toolbar>
+            </AppBar>
             <Drawer
                 className={ classes.drawer }
                 variant="permanent"
@@ -75,7 +102,9 @@ const Layout = ({ children }) => {
                 </List>
             </Drawer>
             <div className={classes.page}>
-                 { children }
+                  <div className={classes.toolbar}>
+                     { children }
+                  </div> 
             </div>
         </div>
      );

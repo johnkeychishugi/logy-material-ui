@@ -1,7 +1,7 @@
 import {  makeStyles } from '@mui/styles';
 import { Typography, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@mui/icons-material';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -18,12 +18,16 @@ const useStyle = makeStyles({
     },
     root:{
         display: 'flex'
+    },
+    active:{
+        background: '#f4f4f4 !important'
     }
 })
 
 const Layout = ({ children }) => {
     const classes = useStyle();
     const redirect = useHistory();
+    const location = useLocation()
     const menuItems =[
         {
             text: 'My Notes',
@@ -56,6 +60,7 @@ const Layout = ({ children }) => {
                            button 
                            key={item.text}
                            onClick={() => redirect.push(item.path)}
+                           className={location.pathname == item.path ? classes.active : null}
                            >
                             <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text}/>

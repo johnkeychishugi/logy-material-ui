@@ -3,6 +3,7 @@ import { Typography, Button, Container, TextField, Radio,
          RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import {  makeStyles } from '@mui/styles';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   field:{
@@ -19,6 +20,7 @@ const Create = () => {
   const [detailsError,setDetailsError] = useState(false);
   const [category,setCategory] = useState('todos');
   const classes = useStyles();
+  const redirect = useHistory();
 
   const handleSubmit = (e) =>{
     e.preventDefault();
@@ -34,7 +36,11 @@ const Create = () => {
    }
 
     if(title && details){
-      console.log(title,details,category);
+       fetch('http://localhost:8000/notes',{
+         method: 'POST',
+         headers: {"Content-type" : "application/json"},
+         body: JSON.stringify({ title,details,category })
+       }).then(()=>  redirect.push('/'));
     }
   }
 

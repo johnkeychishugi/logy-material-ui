@@ -1,7 +1,6 @@
 import { Card, CardHeader, CardContent, IconButton, Typography, Avatar } from '@mui/material';
 import { DeleteOutlined } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles';
-import { yellow, green, pink, blue } from '@mui/material/colors';
 
 const useStyle = makeStyles({
     avatar:{
